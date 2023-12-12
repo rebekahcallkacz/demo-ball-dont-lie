@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
-const loadAllFruits = async () => {
+const loadAllPlayers = async () => {
   // Get the response
   const response = await fetch(`https://www.balldontlie.io/api/v1/players`, {
     // This tells the API that you want your data in JSON format
@@ -11,10 +9,10 @@ const loadAllFruits = async () => {
   });
   // Pull out your data
   const data = await response.json();
-  // If there's data, return the results (where the people are)
+  // If there's data, return the data (where the people are)
   if (data) {
     console.log(data);
-    return data;
+    return data.data;
   }
   // If there's not data, return an empty array
   return [];
@@ -22,7 +20,7 @@ const loadAllFruits = async () => {
 
 function App() {
   useEffect(() => {
-    loadAllFruits();
+    loadAllPlayers();
   }, []);
   return (
     <>
